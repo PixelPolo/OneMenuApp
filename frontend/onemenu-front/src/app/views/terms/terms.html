@@ -1,0 +1,100 @@
+<!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
+<!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
+
+<!-- User infos -->
+<div>
+  <h2>Vos informations</h2>
+  <p>
+    <strong>OneMenu collecte uniquement</strong> les informations nécessaires à
+    votre identification et au bon fonctionnement de l'application.
+  </p>
+  <ul>
+    <li><strong>ID utilisateur Auth0</strong></li>
+    <li><strong>Adresse e-mail</strong></li>
+    <li><strong>Pseudo</strong> (non utilisé actuellement)</li>
+  </ul>
+  <p>
+    Ces données sont <strong>strictement confidentielles</strong> et ne sont
+    <strong>jamais partagées</strong>
+    avec des tiers. Vous pouvez à tout moment demander leur suppression en
+    supprimant votre compte:
+  </p>
+</div>
+
+<!-- Auth0 info -->
+<div>
+  <h2>À propos de votre connexion</h2>
+  <p>
+    OneMenu utilise <strong>Auth0</strong>, un service d'authentification
+    sécurisé, pour vous permettre de vous
+    <strong>connecter facilement et en toute sécurité</strong>. Grâce à Auth0,
+    vous pouvez vous connecter avec :
+  </p>
+  <ul>
+    <li>Votre compte <strong>Google</strong></li>
+    <li>
+      Une adresse <strong>email</strong> et un <strong>mot de passe</strong>
+    </li>
+  </ul>
+  <p>
+    Si vous vous connectez avec votre compte Google, certaines
+    <strong>informations de base</strong> liées à votre
+    <strong>profil Google</strong> seront collectées par Auth0. Ces données
+    incluent par exemple votre nom, votre adresse email et votre photo de
+    profil.
+  </p>
+  <p>
+    Comme mentionné ci-dessus, <strong>OneMenu</strong> n'utilise que les
+    <strong>informations strictement nécessaires</strong> au bon fonctionnement
+    de l'application.
+  </p>
+  <p (click)="showCollected.set(!showCollected())" style="text-align: center">
+    <strong
+      >Liste complète des données collectées {{showCollected() ? "-" :
+      "+"}}</strong
+    >
+  </p>
+  @if(showCollected()) {
+  <div>
+    <p>Données issues de votre compte Google :</p>
+    <ul>
+      <li>Date de création du compte (created_at)</li>
+      <li>Adresse email (email)</li>
+      <li>Statut de vérification de l'email (email_verified)</li>
+      <li>Nom de famille (family_name)</li>
+      <li>Prénom (given_name)</li>
+      <li>Identités liées au compte (identities)</li>
+      <ul>
+        <li>Fournisseur d'identité (provider)</li>
+        <li>ID utilisateur chez le fournisseur (user_id)</li>
+        <li>Type de connexion (connection)</li>
+        <li>Connexion sociale (isSocial)</li>
+      </ul>
+      <li>Nom complet (name)</li>
+      <li>Nom d'utilisateur / pseudo (nickname)</li>
+      <li>Photo de profil (picture)</li>
+      <li>Date de dernière mise à jour (updated_at)</li>
+      <li>Identifiant utilisateur global (user_id)</li>
+      <li>Adresse IP de la dernière connexion (last_ip)</li>
+      <li>Date de la dernière connexion (last_login)</li>
+      <li>Nombre total de connexions (logins_count)</li>
+      <li>Utilisateurs bloqués (blocked_for)</li>
+      <li>Authentificateurs (guardian_authenticators)</li>
+      <li>Clés de passe enregistrées (passkeys)</li>
+    </ul>
+  </div>
+  }
+  <p>
+    En cas de connexion avec une adresse email et un mot de passe, seules les
+    informations que vous avez vous-même fournies sont collectées, à savoir :
+    votre <strong>adresse email</strong>, un <strong>pseudo</strong> généré
+    automatiquement (ou défini lors de l'inscription), et votre
+    <strong>mot de passe</strong>.
+  </p>
+  <p>
+    <strong
+      >Votre mot de passe est stocké de manière sécurisée par Auth0 et n'est
+      jamais accessible par OneMenu.</strong
+    >
+  </p>
+</div>

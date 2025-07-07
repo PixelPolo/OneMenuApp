@@ -1,0 +1,51 @@
+<!-- Back btn -->
+<div>
+  <button class="main-btn" routerLink="/session">Retour</button>
+</div>
+
+<!-- Session info -->
+<div>
+  <h1>Session</h1>
+  @if(session()) {
+  <app-session-detail [session]="session()!" />
+  }
+</div>
+
+<!-- Votes -->
+<div>
+  <h1>Mes votes</h1>
+  <p>
+    Voici les <strong>plats proposés</strong> pour cette session.
+    <strong>Notez-les de 1 à 10</strong> pour aider OneMenu à choisir le repas
+    idéal qui plaira au plus grand nombre !
+    <strong>N'oubliez-pas de valider</strong> vos notes...
+  </p>
+  @for (dishType of dishTypes(); track dishType.dishTypeID) { @if
+  (hasDishesOfType(dishType.dishTypeID)) {
+  <hr style="margin: 50px 50px 50px 50px" />
+  <h2>{{ dishType.name }}</h2>
+  } @for (dish of dishes(); track dish.dishID) { @if(dishType.dishTypeID ===
+  dish.dishTypeID) {
+  <div class="dish-card">
+    <app-dish-detail [dish]="dish" />
+    <div class="form-input">
+      <label for="note-{{ dish.dishID }}">Ma note</label>
+      <select
+        id="note-{{ dish.dishID }}"
+        [ngModel]="votes()[dish.dishID!]"
+        (ngModelChange)="vote(dish.dishID!, $event)"
+      >
+        <option value="" disabled>Choisir une note</option>
+        @for(note of possibleNotes; track note) {
+        <option [value]="note">{{note}}</option>
+        }
+      </select>
+    </div>
+  </div>
+  } } }
+  <hr style="margin: 50px 50px 50px 50px" />
+  <div class="validate-btn">
+    <p><strong>N'oubliez pas de ...</strong></p>
+    <button class="main-btn" (click)="submitVotes()">Valider</button>
+  </div>
+</div>

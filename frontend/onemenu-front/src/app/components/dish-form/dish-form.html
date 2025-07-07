@@ -1,0 +1,46 @@
+<form [formGroup]="dishForm" (ngSubmit)="onSubmit()">
+  <!-- name -->
+  <div class="form-input">
+    <label for="name">Nom du plat</label>
+    <input id="name" formControlName="name" type="text" />
+  </div>
+  <!-- description -->
+  <div class="form-input">
+    <label for="description">Description</label>
+    <input id="description" formControlName="description" type="text" />
+  </div>
+  <!-- price -->
+  <div class="form-input">
+    <label for="price">Prix</label>
+    <input id="price" formControlName="price" type="number" step="0.0001" />
+  </div>
+  <!-- currency -->
+  <div class="form-input">
+    <label for="currency">Devise</label>
+    <select id="currency" formControlName="currency">
+      <option value="" disabled>Choisir une devise</option>
+      @for (currency of possibleCurrencies; track currency) {
+      <option value="{{currency}}">{{currency}}</option>
+      }
+    </select>
+  </div>
+  <!-- dishTypeID -->
+  <div class="form-input">
+    <label for="dishTypeID">Type</label>
+    <select id="dishTypeID" formControlName="dishTypeID">
+      <option value="" disabled>Choisir un type</option>
+      @for (dishType of dishTypes(); track dishType.dishTypeID) {
+      <option value="{{dishType.dishTypeID}}">{{dishType.name}}</option>
+      }
+    </select>
+  </div>
+  <!-- submit -->
+  <div class="submit-btn">
+    <button class="cancel-btn" type="button" (click)="cancelEvent.emit()">
+      Annuler
+    </button>
+    <button class="main-btn" type="submit" [disabled]="!dishForm.valid">
+      Valider
+    </button>
+  </div>
+</form>

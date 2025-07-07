@@ -1,0 +1,31 @@
+<!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
+<!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
+
+<!-- Not voting -->
+@if (!isVoting()) {
+<!-- Join session -->
+<div>
+  <h1>Rejoindre une session</h1>
+  <div><app-session-join (saveEvent)="loadInvitations()" /></div>
+</div>
+<!-- My sessions -->
+<div>
+  <h1>Mes sessions rejointes</h1>
+  <p>
+    Retrouvez ci-dessous les <strong>sessions</strong> que vous avez rejointes.
+    <strong>Cliquez</strong> sur l'une d'elles <strong>pour voter</strong> pour
+    chaque plat proposé et <strong>découvrir le menu choisi</strong> par
+    OneMenu, pensé pour satisfaire au mieux tous les participants.
+  </p>
+  @for (session of sessions(); track session.sessionID) {
+  <div (click)="selectSession(session)">
+    <app-session-detail [session]="session" />
+  </div>
+  @if (selectedSession() === session) {
+  <div class="action-btns">
+    <button class="main-btn" (click)="showResults()">Résultats</button>
+    <button class="main-btn" (click)="voteSession()">Voter</button>
+  </div>
+  } }
+</div>
+}

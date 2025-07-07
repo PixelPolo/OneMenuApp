@@ -1,0 +1,53 @@
+<!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
+<!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
+
+<!-- Create session -->
+<div>
+  <h1>Créer une session</h1>
+  <p>
+    Ici, vous pouvez créer une <strong>session de vote</strong>, c'est-à-dire un
+    <strong>repas avec plusieurs choix de plats</strong> qui seront notés par
+    vos invités. OneMenu choisira ensuite le repas qui satisfait le plus
+    l'ensemble des invités !
+  </p>
+
+  @if (!creatingSession()) {
+  <div style="text-align: center">
+    <button class="main-btn" (click)="creatingSession.set(true)">Créer</button>
+  </div>
+  } @else {
+  <app-session-form
+    (cancelEvent)="handleFormCancel($event)"
+    (saveEvent)="handleFormSave($event)"
+  />
+  }
+</div>
+
+<!-- Session list -->
+<div>
+  <h1>Mes sessions</h1>
+  <p>
+    Voici la <strong>liste de vos sessions</strong>. Vous pouvez
+    <strong>cliquer</strong> sur l'une d'elles pour les
+    <strong>éditer et y ajouter des plats</strong>, ainsi que
+    <strong>partager</strong> le lien d'invitation au vote, ou encore la
+    <strong>supprimer</strong>.
+  </p>
+  @for (session of sessions(); track session.sessionID) {
+  <div (click)="selectSession(session)">
+    <app-session-detail [session]="session" />
+  </div>
+  @if (selectedSession() === session) {
+  <!-- Clipoard copied -->
+  @if(clipboardCopied()) {
+  <div class="clipboard-text">
+    <strong>ID de la session copié, partagez-le !</strong>
+  </div>
+  }
+  <div class="action-btns">
+    <button class="main-btn" (click)="deleteSession()">Supprimer</button>
+    <button class="main-btn" (click)="shareSession()">Partager</button>
+    <button class="main-btn" (click)="editSession()">Éditer</button>
+  </div>
+  } }
+</div>

@@ -1,0 +1,18 @@
+<div class="detail-item">
+  <div class="detail-row">
+    <div>Nom</div>
+    <div>{{dish().name}}</div>
+  </div>
+  <div class="detail-row">
+    <div>Description</div>
+    <div>{{dish().description ? dish().description : "-"}}</div>
+  </div>
+  <div class="detail-row">
+    <div>Prix</div>
+    <div>{{dish().price}} {{dish().currency}}</div>
+  </div>
+  <div class="detail-row">
+    <div>Type</div>
+    <div>{{dishType()?.name}}</div>
+  </div>
+</div>

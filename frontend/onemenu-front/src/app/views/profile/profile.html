@@ -1,0 +1,39 @@
+<h1>Profil</h1>
+
+<!-- Actions btns -->
+<h2>Se déconnecter</h2>
+<div style="text-align: center">
+  <app-logout-button />
+</div>
+
+<!-- Terms -->
+<div>
+  <app-terms />
+</div>
+
+<!-- Delete account -->
+<h2>Supprimer son compte</h2>
+<p>
+  <strong> ATTENTION <br /> </strong>
+  La suppression de votre compte est <strong><u>définitive</u></strong> et
+  engendrera également la suppression de
+  <strong><u>toutes vos données personnelles</u></strong>
+  associées à OneMenu.
+</p>
+<p>En particulier, seront supprimés :</p>
+<ul>
+  <li>
+    Votre compte utilisateur <br />(adresse email, nom, identifiant Auth0)
+  </li>
+  <li>Toutes les sessions que vous avez créées</li>
+  <li>Tous les plats que vous avez proposés</li>
+  <li>Tous vos votes sur les plats</li>
+  <li>Toutes les invitations reçues ou envoyées</li>
+</ul>
+<p>
+  Ces données ne pourront pas être récupérées après suppression.
+  <strong>Cette action est irréversible.</strong>
+</p>
+<div style="text-align: center">
+  <app-delete-button />
+</div>

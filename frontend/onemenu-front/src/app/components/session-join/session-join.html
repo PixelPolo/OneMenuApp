@@ -1,0 +1,23 @@
+<form [formGroup]="joinForm" (ngSubmit)="onSubmit()">
+  <div class="form-input">
+    <label for="id">Identifiant</label>
+    <input
+      id="id"
+      formControlName="id"
+      type="text"
+      placeholder="Identifiant de la session"
+    />
+  </div>
+  <!-- Error -->
+  @if(this.errorMsg()) {
+  <div class="error-msg">
+    <strong>{{this.errorMsg()}}</strong>
+  </div>
+  }
+  <!-- submit -->
+  <div class="submit-btn">
+    <button class="main-btn" type="submit" [disabled]="!joinForm.valid">
+      Valider
+    </button>
+  </div>
+</form>

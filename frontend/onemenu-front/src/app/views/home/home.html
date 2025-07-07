@@ -1,0 +1,32 @@
+<!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
+<!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
+
+<div class="home-container">
+  <!-- Github link -->
+  <a
+    style="text-decoration: none; color: inherit; text-align: center"
+    href="https://github.com/PixelPolo"
+  >
+    <img ngSrc="github.png" alt="Github logo" width="50" height="50" />
+    <div><strong>PixelPolo</strong></div>
+  </a>
+
+  <!-- Welcome -->
+  <div style="text-align: center">
+    <h1>OneMenu</h1>
+    <h2>Bienvenue</h2>
+    <app-login-button />
+  </div>
+
+  <!-- Terms -->
+  <div>
+    <div (click)="showTerms.set(!showTerms())" style="text-align: center">
+      <p>
+        <strong>Conditions d'utilisations {{showTerms()? "-" : "+"}} </strong>
+      </p>
+    </div>
+    @if (showTerms()) {
+    <app-terms />
+    }
+  </div>
+</div>

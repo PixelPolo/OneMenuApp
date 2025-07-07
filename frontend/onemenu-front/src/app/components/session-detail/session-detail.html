@@ -1,0 +1,18 @@
+<div class="detail-item">
+  <div class="detail-row">
+    <div>Titre</div>
+    <div>{{session().title}}</div>
+  </div>
+  <div class="detail-row">
+    <div>Description</div>
+    <div>{{session().description}}</div>
+  </div>
+  <div class="detail-row">
+    <div>Repas le</div>
+    <div>{{ session().sessionDate | date: 'dd/MM/yyyy à HH:mm' }}</div>
+  </div>
+  <div class="detail-row">
+    <div>Créée le</div>
+    <div>{{ session().creationDate | date: 'dd/MM/yyyy à HH:mm' }}</div>
+  </div>
+</div>

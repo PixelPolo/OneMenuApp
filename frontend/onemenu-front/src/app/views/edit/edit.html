@@ -1,0 +1,57 @@
+<!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
+<!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
+
+<!-- Back btn -->
+<div>
+  <button class="main-btn" routerLink="/create">Retour</button>
+</div>
+
+<!-- Session title -->
+<h1>{{session()?.title}}</h1>
+
+<!-- Edit the session -->
+<h2 style="cursor: pointer" (click)="isEditing.set(!isEditing())">
+  Editer la session {{isEditing() ? "-" : "+"}}
+</h2>
+@if (isEditing()) {
+<app-session-form
+  [sessionToEdit]="session()"
+  (cancelEvent)="isEditing.set(false)"
+  (saveEvent)="resetComponent()"
+/>
+}
+
+<!-- Add dishes to the session -->
+<h2 style="cursor: pointer" (click)="isAddingDishes.set(!isAddingDishes())">
+  Ajouter des plats {{isAddingDishes() ? "-" : "+"}}
+</h2>
+@if (isAddingDishes()) {
+<app-dish-form
+  [sessionID]="sessionID()"
+  (cancelEvent)="isAddingDishes.set(false)"
+  (saveEvent)="resetComponent()"
+/>
+}
+
+<!-- Session's dishes -->
+<h2 style="cursor: pointer" (click)="isListingDishes.set(!isListingDishes())">
+  Liste des plats {{isListingDishes() ? "-" : "+"}}
+</h2>
+@if (dishes().length !== 0 && isListingDishes()) { @for (dish of dishes(); track
+dish.dishID) { @if (!isEditingDish()) {
+<div (click)="selectDish(dish)">
+  <app-dish-detail [dish]="dish" />
+</div>
+} @else if (isEditingDish() && selectedDish() === dish){
+<app-dish-form
+  [sessionID]="sessionID()"
+  [dishToEdit]="dish"
+  (cancelEvent)="isEditingDish.set(false)"
+  (saveEvent)="resetComponent()"
+/>
+} @if (selectedDish() === dish && !isEditingDish()) {
+<div class="submit-btn">
+  <button class="main-btn" (click)="deleteDish()">Supprimer</button>
+  <button class="main-btn" (click)="isEditingDish.set(true)">Editer</button>
+</div>
+} } }

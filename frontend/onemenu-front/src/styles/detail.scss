@@ -1,0 +1,21 @@
+/* DETAIL */
+
+.detail-item {
+  border: 1px solid black;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.detail-row {
+  display: grid;
+  grid-template-columns: 30% 70%;
+}
+
+.detail-row div {
+  padding: 5px;
+}
+
+.detail-row div:nth-child(odd) {
+  border-right: 1px solid black;
+  font-weight: bold;
+}

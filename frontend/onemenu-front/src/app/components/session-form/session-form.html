@@ -1,0 +1,30 @@
+<form [formGroup]="sessionForm" (ngSubmit)="onSubmit()">
+  <!-- title -->
+  <div class="form-input">
+    <label for="title">Titre</label>
+    <input id="title" formControlName="title" type="text" />
+  </div>
+  <!-- description -->
+  <div class="form-input">
+    <label for="description">Description</label>
+    <input id="description" formControlName="description" type="text" />
+  </div>
+  <!-- session date -->
+  <div class="form-input">
+    <label for="sessionDate">Date du repas</label>
+    <input
+      id="sessionDate"
+      formControlName="sessionDate"
+      type="datetime-local"
+    />
+  </div>
+  <!-- submit -->
+  <div class="submit-btn">
+    <button class="cancel-btn" type="button" (click)="cancelEvent.emit()">
+      Annuler
+    </button>
+    <button class="main-btn" type="submit" [disabled]="!sessionForm.valid">
+      Valider
+    </button>
+  </div>
+</form>

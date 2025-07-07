@@ -1,0 +1,42 @@
+<!-- Back btn -->
+<div>
+  <button class="main-btn" routerLink="/session">Retour</button>
+</div>
+
+<!-- Session info -->
+<div>
+  <h1>Résultats</h1>
+  @if(session()) {
+  <app-session-detail [session]="session()!" />
+  }
+</div>
+
+<!-- Results -->
+<div>
+  <p>
+    À partir des <strong>notes attribuées</strong> à chaque plat, OneMenu a
+    calculé le <strong>menu</strong> qui
+    <strong>maximise la satisfaction collective</strong>. Voici la
+    <strong>meilleure combinaison de plats</strong> selon les préférences de
+    tous les participants :
+  </p>
+</div>
+
+<!-- Results card -->
+@for (result of results(); track result.dishType) {
+<div class="result-card">
+  <h2>{{result.dishType.name}}</h2>
+  <p>Avec une note moyenne de : {{result.gradesAVG}} / 10</p>
+  <app-dish-detail [dish]="result.bestDish" />
+</div>
+}
+
+<div style="text-align: right">
+  <p>
+    {{votersCount()}} participants ont voté sur {{totalInvitations()}} invités.
+  </p>
+</div>
+
+<div style="text-align: center; margin-top: 50px">
+  <h3>OneMenu vous souhaite bon appétit !</h3>
+</div>
