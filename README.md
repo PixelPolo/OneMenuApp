@@ -21,7 +21,7 @@ An optimization algorithm processes all the votes and selects the menu that
 | Frontend   | Angular            |
 | Backend    | Express.js (TypeScript) |
 | Database   | PostgreSQL         |
-| Deployment | Docker + Render    |
+| Deployment | Docker + Coolify    |
 
 ## Project Structure
 
