@@ -137,11 +137,9 @@ ENV DATABASE_URL=${DATABASE_URL}
 # Generate the Prisma client
 RUN npx prisma generate
 
-# Set the port environment variable (required by Render)
-ENV PORT=8080
-
 # Expose the application port
-EXPOSE 8080
+ENV PORT=3000
+EXPOSE 3000
 
 # Start the compiled app
 CMD ["node", "dist/app.js"]
