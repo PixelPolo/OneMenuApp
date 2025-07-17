@@ -50,6 +50,8 @@ npm start
 
 ### Build the image and run the container
 
+Check docker-compose.yml or use this script:
+
 ```bash
 #!/bin/bash
 
@@ -138,7 +140,6 @@ ENV DATABASE_URL=${DATABASE_URL}
 RUN npx prisma generate
 
 # Expose the application port
-ENV PORT=3000
 EXPOSE 3000
 
 # Start the compiled app

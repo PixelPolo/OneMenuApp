@@ -1,0 +1,48 @@
+# This docker-compose is for dev only
+# Configure .env vars correctly in prod
+# Deploy whithout compose !
+
+services:
+  database:
+    image: postgres:17
+    container_name: postgres-container
+    restart: always
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: mydb
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    ports:
+      - "5432:5432"
+
+  backend:
+    build:
+      context: ./backend/onemenu-back
+      args:
+        DATABASE_URL: postgres://user:password@database:5432/mydb
+    container_name: onemenu-back-container
+    ports:
+      - "3000:3000"
+    depends_on:
+      - database
+    env_file: ./backend/onemenu-back/.env
+    environment:
+      DATABASE_URL: postgres://user:password@database:5432/mydb
+
+  frontend:
+    build:
+      context: ./frontend/onemenu-front
+      dockerfile: Dockerfile.dev
+    container_name: onemenu-front-dev
+    ports:
+      - "4200:4200"
+    volumes:
+      - ./frontend/onemenu-front:/app
+      - /app/node_modules # Avoid conflicts
+    depends_on:
+      - backend
+
+volumes:
+  pgdata:

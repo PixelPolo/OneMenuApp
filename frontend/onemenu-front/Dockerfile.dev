@@ -1,0 +1,18 @@
+# Use Node.js base image
+FROM node:20
+
+# Set working directory
+WORKDIR /app
+
+# Install dependencies first (use cache when possible)
+COPY package*.json ./
+RUN npm install
+
+# Copy source files
+COPY . .
+
+# Expose Angular dev server port
+EXPOSE 4200
+
+# Default command: run dev server
+CMD ["npm", "run", "start:dev"]

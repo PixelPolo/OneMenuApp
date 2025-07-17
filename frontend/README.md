@@ -1,9 +1,9 @@
 # OneMenu Angular Client
 
-OneMenu is a collaborative meal planning app designed to help users create a shared.  
-menu by allowing invited guests to vote on various starters, main courses, desserts, and more.  
+**OneMenu** is a collaborative meal planning app designed to help users create a shared menu  
+by allowing invited guests to vote on various starters, main courses, desserts, and more.  
 An optimization algorithm processes all the votes and selects the menu that  
-maximizes overall satisfaction across the group — ideal for events, dinners, and parties.
+**maximizes overall satisfaction** across the group — ideal for events, dinners, and parties.
 
 ## Features
 
@@ -15,6 +15,25 @@ maximizes overall satisfaction across the group — ideal for events, dinners, a
 - Mobile-first frontend experience
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.2.
+
+## Environments
+
+<https://angular.dev/tools/cli/environments>
+
+```bash
+# TODO after cloning !
+ng generate environments
+```
+
+```Typescript
+export const environment = {
+  production: true,
+  AUTH0_DOMAIN: '...',
+  AUTH0_CLIENT_ID: '...',
+  AUTH0_API_AUDIENCE: '...',
+  API_URL: '...',
+};
+```
 
 ## Development server
 

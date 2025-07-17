@@ -44,7 +44,6 @@ ENV DATABASE_URL=${DATABASE_URL}
 RUN npx prisma generate
 
 # Expose the application port
-ENV PORT=3000
 EXPOSE 3000
 
 # Start the compiled app
