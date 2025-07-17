@@ -5,6 +5,9 @@ by allowing invited guests to vote on various starters, main courses, desserts, 
 An optimization algorithm processes all the votes and selects the menu that  
 **maximizes overall satisfaction** across the group — ideal for events, dinners, and parties.
 
+Here is the link of the application:  
+<https://onemenu.pixelpolo.com/>
+
 ## Features
 
 - Create voting sessions for menus
